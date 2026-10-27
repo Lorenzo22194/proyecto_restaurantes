@@ -1,26 +1,60 @@
 @import "tailwindcss";
 
+/*
+ * Tokens del design system. Contrastes verificados (WCAG AA, texto normal ≥ 4.5:1):
+ *   vino/crema 9.8 · café/crema 11.8 · dorado/vino 6.4 · café/dorado 7.7 · blanco/vino 11.9
+ *   café suave/crema-50 6.1 · error/crema-50 6.1 · éxito/crema-50 6.0
+ * El dorado nunca se usa como texto sobre fondos claros (1.5:1): solo rellenos y acentos.
+ */
+@theme {
+  --color-wine: #651c35;
+  --color-wine-hover: #4f1529;
+  --color-wine-50: #f8eef1;
+  --color-wine-100: #efd9e0;
+  --color-gold: #e4b84d;
+  --color-gold-soft: #f6e7bf;
+  --color-cream: #f4e8d3;
+  --color-cream-50: #fbf7f0;
+  --color-coffee: #362722;
+  --color-coffee-muted: #6b5a52;
+  --color-line: #e6d9c4;
+  --color-surface: #ffffff;
+
+  --color-success: #2e6b3f;
+  --color-success-bg: #e7f2ea;
+  --color-error: #b42318;
+  --color-error-bg: #fbeae8;
+  --color-warning-bg: #fbf1d8;
+  --color-info-bg: #f1ebe4;
+
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-fraunces), ui-serif, Georgia, serif;
+
+  --radius-card: 1rem;
+  --radius-control: 0.75rem;
+}
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  color-scheme: light;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--color-cream-50);
+  color: var(--color-coffee);
+  font-family: var(--font-sans);
+}
+
+/* Foco visible y consistente en todos los controles interactivos. */
+:focus-visible {
+  outline: 3px solid var(--color-gold);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
 }

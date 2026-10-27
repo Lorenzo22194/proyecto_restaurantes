@@ -39,3 +39,7 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+!.env.example
+
+# datos locales de PostgreSQL embebido (por defecto viven fuera del repo)
+/.data/

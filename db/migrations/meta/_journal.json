@@ -1,0 +1,27 @@
+{
+  "version": "7",
+  "dialect": "postgresql",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "7",
+      "when": 1793075167210,
+      "tag": "0000_identity_restaurants_audit",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1793075175870,
+      "tag": "0001_security_rls",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1793075476882,
+      "tag": "0002_invitee_can_see_restaurant",
+      "breakpoints": true
+    }
+  ]
+}

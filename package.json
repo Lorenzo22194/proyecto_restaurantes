@@ -1,27 +1,53 @@
 {
-  "name": "proyecto_rest",
+  "name": "sobremesa",
   "version": "0.1.0",
   "private": true,
+  "type": "module",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "typecheck": "next typegen && tsc --noEmit",
+    "lint:boundaries": "depcruise src --config .dependency-cruiser.cjs",
+    "test": "vitest run",
+    "test:unit": "vitest run --project unit",
+    "test:integration": "vitest run --project integration",
+    "check": "pnpm typecheck && pnpm lint && pnpm lint:boundaries && pnpm test",
+    "db:start": "tsx --env-file-if-exists=.env.local scripts/db/server.ts",
+    "db:generate": "drizzle-kit generate",
+    "db:generate:custom": "drizzle-kit generate --custom",
+    "db:migrate": "tsx --env-file-if-exists=.env.local scripts/db/migrate.ts --local-app-role",
+    "admin:grant-role": "tsx --env-file-if-exists=.env.local scripts/admin/grant-platform-role.ts"
   },
   "dependencies": {
+    "better-auth": "1.7.10",
+    "drizzle-orm": "0.45.4",
     "next": "16.4.3",
+    "pg": "8.23.1",
     "react": "19.3.0",
-    "react-dom": "19.3.0"
+    "react-dom": "19.3.0",
+    "server-only": "^0.0.1",
+    "zod": "4.6.7"
   },
   "devDependencies": {
     "@tailwindcss/turbopack": "^4",
-    "@types/node": "^20",
+    "@types/node": "^24.19.2",
+    "@types/pg": "^8.23.1",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "dependency-cruiser": "18.7.0",
+    "drizzle-kit": "0.31.11",
+    "embedded-postgres": "17.10.0-beta.17",
     "eslint": "^9",
     "eslint-config-next": "16.4.3",
     "tailwindcss": "^4",
-    "typescript": "^5"
+    "tsx": "4.23.15",
+    "typescript": "^5",
+    "vitest": "5.0.5"
   },
-  "packageManager": "pnpm@11.17.0"
+  "packageManager": "pnpm@11.17.0",
+  "engines": {
+    "node": ">=22"
+  }
 }
